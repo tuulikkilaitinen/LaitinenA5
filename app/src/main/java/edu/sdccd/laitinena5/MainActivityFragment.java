@@ -1,6 +1,6 @@
 // MainActivityFragment.java
 // Fragment in which the DoodleView is displayed
-package com.deitel.doodlz;
+package edu.sdccd.laitinena5;
 
 import android.Manifest;
 import android.app.AlertDialog;

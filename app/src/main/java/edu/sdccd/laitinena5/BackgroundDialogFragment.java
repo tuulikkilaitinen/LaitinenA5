@@ -1,29 +1,17 @@
-package com.deitel.doodlz;
+package edu.sdccd.laitinena5;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v4.app.DialogFragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.SeekBar;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link BackgroundDialogFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link BackgroundDialogFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class BackgroundDialogFragment extends DialogFragment {
     private SeekBar redSeekBar;
     private SeekBar greenSeekBar;

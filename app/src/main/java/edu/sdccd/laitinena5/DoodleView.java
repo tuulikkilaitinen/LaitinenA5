@@ -1,6 +1,6 @@
 // DoodleView.java
 // Main View for the Doodlz app.
-package com.deitel.doodlz;
+package edu.sdccd.laitinena5;
 
 import android.content.Context;
 import android.graphics.Bitmap;

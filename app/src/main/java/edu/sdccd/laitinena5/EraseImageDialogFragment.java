@@ -1,13 +1,13 @@
 // EraseImageDialogFragment.java
 // Allows user to erase image
-package com.deitel.doodlz;
+package edu.sdccd.laitinena5;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.support.v4.app.DialogFragment; //******************************
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 
 // class for the Erase Image dialog
 public class EraseImageDialogFragment extends DialogFragment {

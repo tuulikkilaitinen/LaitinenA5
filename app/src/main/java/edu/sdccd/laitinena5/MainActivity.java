@@ -1,6 +1,6 @@
 // MainActivity.java
 // Sets MainActivity's layout
-package com.deitel.doodlz;
+package edu.sdccd.laitinena5;
 
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
