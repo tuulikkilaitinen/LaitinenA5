@@ -2,6 +2,7 @@
 // Sets MainActivity's layout
 package edu.sdccd.laitinena5;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -29,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
       else
          setRequestedOrientation(
             ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+   }
+
+   @Override
+   public void onActivityResult(int requestCode, int resultCode, Intent data) {
+      System.out.println ("MainActivity: onactivityresult called.");
    }
 }
 

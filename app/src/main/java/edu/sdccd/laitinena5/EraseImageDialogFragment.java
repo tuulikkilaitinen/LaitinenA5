@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
@@ -25,6 +26,8 @@ public class EraseImageDialogFragment extends DialogFragment {
          new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                getDoodleFragment().getDoodleView().clear(); // clear image
+               //getDoodleFragment().getDoodleView().setBGColor(Color.WHITE);
+
             }
          }
       );

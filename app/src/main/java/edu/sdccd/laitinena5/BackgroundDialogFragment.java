@@ -19,7 +19,7 @@ public class BackgroundDialogFragment extends DialogFragment {
     private View backgroundView;
     private int backgroundColor;
 
-    // create an AlertDialog and return it
+    // create an Dialog and return it
     @Override
     public Dialog onCreateDialog(Bundle bundle) {
         // create dialog
@@ -49,7 +49,7 @@ public class BackgroundDialogFragment extends DialogFragment {
         // use current background color to set SeekBar values
         final DoodleView doodleView = getDoodleFragment().getDoodleView();
 
-        this.backgroundColor = doodleView.getMyBackgroundColor();
+        this.backgroundColor = doodleView.getBGColor();
         redSeekBar.setProgress(Color.red(this.backgroundColor));
         greenSeekBar.setProgress(Color.green(this.backgroundColor));
         blueSeekBar.setProgress(Color.blue(this.backgroundColor));
@@ -58,7 +58,7 @@ public class BackgroundDialogFragment extends DialogFragment {
         builder.setPositiveButton(R.string.button_set_color,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        doodleView.setMyBackground(BackgroundDialogFragment.this.backgroundColor);
+                        doodleView.setBGColor(BackgroundDialogFragment.this.backgroundColor);
                     }
                 }
         );

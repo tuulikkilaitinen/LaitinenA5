@@ -6,6 +6,7 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -145,6 +146,10 @@ public class MainActivityFragment extends Fragment {
    public boolean onOptionsItemSelected(MenuItem item) {
       // switch based on the MenuItem id
       switch (item.getItemId()) {
+         case R.id.file_open:
+            SelectImageDialogFragment selectImageDialog = new SelectImageDialogFragment();
+            selectImageDialog.show(getFragmentManager(), "select image");
+            return true;
          case R.id.background:
             BackgroundDialogFragment backgroundDialog = new BackgroundDialogFragment();
             backgroundDialog.show(getFragmentManager(), "background dialog");
@@ -231,6 +236,11 @@ public class MainActivityFragment extends Fragment {
                doodleView.saveImage(); // save the image
             return;
       }
+   }
+
+   @Override
+   public void onActivityResult(int requestCode, int resultCode, Intent data) {
+      System.out.println ("MainActivityFragment: onactivityresult called.");
    }
 
    // returns the DoodleView
