@@ -12,6 +12,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ public class MainActivityFragment extends Fragment {
    private float currentAcceleration;
    private float lastAcceleration;
    private boolean dialogOnScreen = false;
+   private static final int FILE_SELECT_CODE = 2;
 
    // value used to determine whether user shook the device to erase
    private static final int ACCELERATION_THRESHOLD = 100000;
@@ -241,6 +243,23 @@ public class MainActivityFragment extends Fragment {
    @Override
    public void onActivityResult(int requestCode, int resultCode, Intent data) {
       System.out.println ("MainActivityFragment: onactivityresult called.");
+      System.out.println (resultCode);
+      switch (requestCode) {
+         case FILE_SELECT_CODE:
+            if (resultCode == FILE_SELECT_CODE) {
+
+               //get the URI of the selected file
+               Uri uri = data.getData();
+               //get the path
+               //String path = File
+               String path = uri.getPath();
+               System.out.println (path);
+            }
+            break;
+         default:
+            break;
+      }
+      super.onActivityResult(requestCode, resultCode, data);
    }
 
    // returns the DoodleView

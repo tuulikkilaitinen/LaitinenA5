@@ -71,7 +71,7 @@ public class SelectImageDialogFragment extends DialogFragment {
 
 
 */
-        builder.setTitle("Choose your file");
+        //builder.setTitle("Choose your file");
 
 
         builder.setItems(mFileList, new DialogInterface.OnClickListener() {

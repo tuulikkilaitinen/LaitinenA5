@@ -3,7 +3,9 @@
 package edu.sdccd.laitinena5;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -11,6 +13,8 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.print.PrintHelper;
 import android.util.AttributeSet;
@@ -19,7 +23,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -321,6 +328,8 @@ public class DoodleView extends View {
         return pressure;
     }
 
+
+
     // called when the user finishes a touch
     private void touchEnded(int lineID) {
         Path path = pathMap.get(lineID); // get the corresponding Path
@@ -375,6 +384,69 @@ public class DoodleView extends View {
                     message.getYOffset() / 2);
             message.show();
         }
+    }
+
+    public void setBgImage(Bitmap bitmap) {
+
+        //mergeBitmap = resizeBitmap(path, this.getWidth(), this.getHeight());
+        //File sd = Environment.getExternalStorageDirectory();
+        //File image = new File(sd+filePath, imageName);
+
+        //File image = new File(uri.getPath());
+        //BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        //mergeBitmap = BitmapFactory.decodeFile(image.getAbsolutePath(),bmOptions);
+        //mergeBitmap = BitmapFactory.decodeFile(uri.getPath());
+        //mergeBitmap = Bitmap.createScaledBitmap(mergeBitmap, getWidth(), getHeight(),true);
+        //imageView.setImageBitmap(bitmap);
+
+        //mergeBitmap = bitmap;
+
+        //scale bitmap
+        int bitmapWidth = bitmap.getWidth();
+        int bitmapHeigth = bitmap.getHeight();
+        mergeBitmap = Bitmap.createScaledBitmap(bitmap, getWidth(), getHeight(),true);
+        invalidate();
+    }
+
+    public Bitmap resizeBitmap(String photoPath, int targetW, int targetH) {
+        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        bmOptions.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(photoPath, bmOptions);
+        int photoW = bmOptions.outWidth;
+        int photoH = bmOptions.outHeight;
+
+        int scaleFactor = 1;
+        if ((targetW > 0) || (targetH > 0)) {
+            scaleFactor = Math.min(photoW/targetW, photoH/targetH);
+        }
+
+        bmOptions.inJustDecodeBounds = false;
+        bmOptions.inSampleSize = scaleFactor;
+        //bmOptions.inPurgeable = true; //Deprecated API 21
+
+        return BitmapFactory.decodeFile(photoPath, bmOptions);
+    }
+
+    private int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
     }
 }
 
